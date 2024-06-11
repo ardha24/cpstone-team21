@@ -1,162 +1,437 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Slice & Spice Pizza</title>
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.css"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer"
+        />
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+        <script src="js/script.js"></script>
+        <title>Slice & Spice Pizza</title>
+      </head>
+
 <body>
     <div class="container">
         <header>
-            <div class="logo"><img src="assets/Group 40.png" alt="Pizza"></div>
+            <div class="logo">
+                <img src="assets/Group 40.png" alt="Pizza">
+            </div>
             <nav>
-                <a href="#home">Home</a>
-                <a href="#dashboard">Dashboard</a>
-                <a href="#business">Business Report</a>
-                <a href="#team">Our Team</a>
+                <input type="checkbox" id="check">
+                <label for="check" class="check-button">
+                    <i class='fas fa-bars'></i>
+                </label>
+                <ul class="nav-list">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#business">Business Report</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                </ul>
             </nav>
         </header>
+
+        <!-- Banner -->
         <section id="home">
             <div class="banner">
                 <div class="text">
-                    <h1>Sizzle & Spice Pizzaria</h1>
+                    <h1>Spice Your Slice, <br>Buddy!</h1>
                     <p>
-                        Providing high-quality pizza products and exceptional customer service. 
-                        Spice Your Slice, Buddy!
+                        This is a pizza shop with mouthwatering flavors, in every slice. Taste <br> 
+                        the extraordinary!
                     </p>
                 </div>
                 <div class="icon">
-                    <img src="assets/110+_Super_Bowl_Party_Food_Ideas_and_Appetizers-removebg-preview.png" alt="">
+                    <img src="assets/img/110+_Super_Bowl_Party_Food_Ideas_and_Appetizers-removebg-preview 1.png" 
+                    alt="icon">
                 </div>
             </div>
         </section> 
+
+        <!-- About This Website -->
         <div class="about">            
             <h2>PIZZA PLACE SALES</h2>
             <div class="about-text">
-                <p>Pizza Place is a dynamic and innovative company dedicated to providing high-quality pizza products 
-                   and exceptional customer service. With a passion for culinary excellence and a commitment to customer 
-                   satisfaction, we strive to be the premier destination for pizza lovers everywhere.
-                </p>
-            </div>
-        </div>
+                <p>A year's worth of sales from a fictitious pizza place, 
+                    including the date and time of each order and the pizzas 
+                    served, with additional details on the type, size, quantity, 
+                    price, and ingredients.
+                    <br>
+                    <br>
+                    <b>Preview Data:</b>
+        </p>
+    </div>
+
+    <!-- Preview Raw Dataset -->
+    <div class="raw-data">
+        <table id="pizzaTable" class="display">
+            <thead>
+                <tr>
+                    <th>Order Details ID</th>
+                    <th>Order ID</th>
+                    <th>Pizza ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Ingredients</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Size</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+        <!-- Dashboard Section -->
         <section id="dashboard">
-            <div class="dashboard">
-                <div class="dashboard-header">
+            <div class="dashboard-h">
+                <div class="header-title">
                     <h1 >Dashboard Overview</h1>
                 </div>
             </div>
-            <div class="filter">
-                <!-- <label for="range">Select Date Range</label> -->
-                <select name="range" class="date-range">
-                    <option value="select">Select Date Range</option>
-                    <option value="today">Today</option>
-                    <option value="weekly">Weeekly</option>
-                    <option value="monthly">Monthly</option>
-                </select>
-                <select name="range" class="date-range">
-                    <option value="select">Time</option>
-                    <option value="today">Today</option>
-                    <option value="weekly">Weeekly</option>
-                    <option value="monthly">Monthly</option>
-                </select>
-                <select name="range" class="date-range">
-                    <option value="select">Category Pizza</option>
-                    <option value="today">Today</option>
-                    <option value="weekly">Weeekly</option>
-                    <option value="monthly">Monthly</option>
-                </select>
-                <select name="range" class="date-range">
-                    <option value="select">Pizza Type</option>
-                    <option value="today">Today</option>
-                    <option value="weekly">Weeekly</option>
-                    <option value="monthly">Monthly</option>
-                </select>
+
+            <!-- Dashboard - Score Card -->
+            <div class="summary">
+                <div class="summary-item">
+                    <img src="assets/img/pizza score card icon.png" alt="Pizza Icon" class="iconn">
+                    <div class="text-summary">
+                        <h1>Total Revenue</h1>
+                        <p id="total-revenue">$0K</p>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <img src="assets/img/pizza score card icon.png" alt="Pizza Icon" class="iconn">
+                    <div class="text-summary">
+                        <h1>Total Orders</h1>
+                        <p id="total-order">0</p>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <img src="assets/img/pizza score card icon.png" alt="Pizza Icon" class="iconn">
+                    <div class="text-summary">
+                        <h1>Pizza Types</h1>
+                        <p id="total-types">0</p>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <img src="assets/img/pizza score card icon.png" alt="Pizza Icon" class="iconn">
+                    <div class="text-summary">
+                        <h1>Avg per Month</h1>
+                        <p id="total-avg">$0K</p>
+                    </div>
+                </div>
             </div>
-        </section>
+
+            <!-- Dashboard - Filter -->
+            <div class="filters">
+                <label for="category">Filter by Category:</label>
+                <select id="typePizza">
+                  <option value="all">All</option>
+                  <option value="Veggie">Veggie</option>
+                  <option value="Supreme">Supreme</option>
+                  <option value="Classic">Classic</option>
+                  <option value="Chicken">Chicken</option>
+                </select>
+                <button onclick="applyFilter()">Filter</button>
+                <button onclick="resetFilter()">Reset</button>
+              </div>
+              <ul id="sales-list"></ul>
+              <div class="charts">
+                <div class="chart-wrapper">
+                  <h3>PIZZA SOLD BY SIZE</h3>
+                  <canvas id="size"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                  <h3>MONTHLY SALES PIZZA</h3>
+                  <canvas id="monthly"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                  <h3>SALES PIZZA IN HOUR</h3>
+                  <canvas id="hourly"></canvas>
+                </div>
+                
+              </div>
+            <div class="chart-wrapper-tp-bt">
+                <div class="chart-wrapper">
+                  <h3>TOP 5 SALES PIZZA</h3>
+                  <canvas id="top-five"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                  <h3>BOTTOM 5 SALES PIZZA</h3>
+                  <canvas id="bottom-five"></canvas>
+                </div>
+            </div>
+
+            </section>
+
+        <!-- Business Reports -->
         <section id="business">
-            <div class="business-report">
-                <div class="dashboard-header">
-                    <h1 >Business Report</h1>
+            <div class="business-">
+                <div class="header-title">
+                    <h1>Business Report</h1>
                 </div> 
-                <div class="report-container">
-                    <p>
-                        1. Top 5 tipe pizza yang paling banyak terjual adalah classic_dlx sebanyak 2.453 buah, bbq_ckn sebanyak 2.432 buah, hawaiian sebanyak 2422 buah, pepperoni sebnyak 2.418 buah, dan thai_ckn sebanyak 2.371 buah.
-                        <br>
-                        2. Lima tipe pizza yang paling sedikit terjual adalah brie_Carre sebanyak 490 buah, mediterrraneo sebanyak 934 buah, calabrese sebanyak 937 buah, spinach_supr sebanyak 950 buah, dan soppressata sebanyak 961 buah.
-                        <br>
-                        3. Untuk menaikkan penjualan tipe pizza terendah, dapat menggunakan menu bundling, misalnya tipe pizza terendah (brie_carre) dibundling dengan tipe pizza terlaris (classic_dlx).
-                    </p>
+                <div class="business-report">
+                    <div class="report-container">
+                        <h2>Business Insights</h2>
+                        <ol>
+                           <li>The top 5 most sold pizza types are <b>classic_dlx</b>, <b>bbq_ckn</b>, <b>hawaiian</b>, <b>pepperoni</b>, and <b>thai_ckn</b>.</li>
+                           <li>The five least sold pizza types are brie_Carre, mediterrraneo, calabrese, spinach_supr, and soppressata.</li>
+                           <li>Pizza Place's 2015 sales trends revealing fluctuating revenue, hitting a low in October and "Brie_Carre" consistently underperformed.</li>
+                           <li>Every month, L-size pizzas are the most popular.</li>
+                        </ol>
+                    </div>
+                    <div class="report-container">
+                        <h2>Business Recommendations</h2>
+                        <ol>
+                            <li>Based on pizza sales data by size, we can remove the least or low selling pizza sizes and maximize the pizza sizes whose sales are most in demand, namely Small, Medium, and Large.</li>
+                            <li>Pizza sales fluctuate every month, the highest is in July while the lowest is in October. Based on this data, we can maximize sales in the following 6 months of the year so that sales each month do not fluctuate anymore.</li>
+                            <li>The most sold pizza type is classic_dlx while the least is brie_carre type. Based on the data, we can maximize the sales of the lowest menu by creating a bundling menu with the top 5 most ordered menus.</li>
+                         </ol>
+                    </div>
                 </div>
             </div>
         </section>
-        <section id="team">
-            <div class="our-team">
-                <div class="dashboard-header">
-                    <h1 >Meet Our Team</h1>
-                </div> 
-            </div>
-        </section>
-        <div class="team-mates">
-            <div class="icon-team">
-                <img src="" alt="" class="foto">
-                <h3>Putu Anggi</h3>
-                <p>Project Leader</p>
-            </div>
-            <div class="icon-team">
-                <img src="" alt="" class="foto">
-                <h3>Muhammad Mardhotillah</h3>
-                <p>PIC Front-end Engiineer</p>
-            </div> <div class="icon-team">
-                <img src="" alt="" class="foto">
-                <h3>Eka Fitriyani M</h3>
-                <p>Front-end Engiineer</p>
-            </div> <div class="icon-team">
-                <img src="" alt="" class="foto">
-                <h3>Allicia Galuh Paramita</h3>
-                <p>Front-end Engiineer</p>
-            </div> <div class="icon-team">
-                <img src="" alt="" class="foto">
-                <h3>Ahmad Alif W</h3>
-                <p>Front-end Engiineer</p>
-            </div> <div class="icon-team">
-                <img src="" alt="" class="foto">
-                <h3>Gerani Eka Nuraizah</h3>
-                <p>Deployment</p>
-            </div> <div class="icon-team">
-                <img src="" alt="" class="foto">
-                <h3>Vika Nurqurotul Nabila </h3>
-                <p>PIC Pitch Deck</p>
-            </div> <div class="icon-team">
-                <img src="" alt="" class="foto">
-                <h3>Ryo Aditya Pratama</h3>
-                <p>Pitch Deck</p>
-            </div>
-            <div class="icon-team">
-                <img src="" alt="" class="foto">
-                <h3>Komang Amelia Komala Dewi</h3>
-                <p>Pitch Deck</p>
-            </div> <div class="icon-team">
-                <img src="" alt="" class="foto">
-                <h3>Ikhsan Maulan</h3>
-                <p>PIC Quality Assurrance</p>
-            </div> <div class="icon-team">
-                <img src="" alt="" class="foto">
-                <h3>Muhammad Nur Rohim Aziz</h3>
-                <p>Quality Assurance</p>
-            </div> <div class="icon-team">
-                <img src="" alt="" class="foto">
-                <h3>Eve Pauline Damanik</h3>
-                <p>Quality Assurance</p>
-            </div>
+
+        <!-- Team Section -->
+        <div class="our-team">
+            <div class="header-title">
+                <h1>Meet Our Team</h1>
+            </div> 
         </div>
+
+            <section id="team">
+                <div class="team-container">
+                    <div class="team-card">
+                        <img src="./assets/team-members/Putu.png" alt="Team Member Photo" class="team-photo">
+                        <div class="team-info">
+                            <div class="team-name">
+                                <h1>Anggi</h1>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/putuanggiii" target="_blank" class="social-icon linkedin">
+                                        <img src="./assets/img/linked.png" alt="LinkedIn">
+                                    </a>
+                                    <a href="https://www.instagram.com/putuanggiii" target="_blank" class="social-icon instagram">
+                                        <img src="./assets/img/ig.png" alt="Instagram">
+                                    </a>
+                            </div>
+                            </div>
+                                <div class="team-role">Project Leader</div>
+                                <div class="team-university">UPN "Veteran" Jawa Timur</div>
+                            </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="./assets/team-members/Ardha.png" alt="Team Member Photo" class="team-photo">
+                        <div class="team-info">
+                            <div class="team-name">
+                                <h1>Ardha</h1>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/muhammad-mardhotillah-8b2982221/" target="_blank" class="social-icon linkedin">
+                                        <img src="./assets/img/linked.png" alt="LinkedIn">
+                                    </a>
+                                    <a href="https://www.instagram.com/d.rdha?igsh=MXNudW1keWRxYnJ6ZA==" target="_blank" class="social-icon instagram">
+                                        <img src="./assets/img/ig.png" alt="Instagram">
+                                    </a>
+                            </div>
+                            </div>
+                                <div class="team-role">PIC Front-End Engineer</div>
+                                <div class="team-university">Universitas Bumigora</div>
+                            </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="./assets/team-members/Eka.png" alt="Team Member Photo" class="team-photo">
+                        <div class="team-info">
+                            <div class="team-name">
+                                <h1>Eka</h1>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/ekafitriyantim" target="_blank" class="social-icon linkedin">
+                                        <img src="./assets/img/linked.png" alt="LinkedIn">
+                                    </a>
+                                    <a href="https://www.instagram.com/fitriyanti._.ekaaa?igsh=MXZidWJqajF3M2NvNw==" target="_blank" class="social-icon instagram">
+                                        <img src="./assets/img/ig.png" alt="Instagram">
+                                    </a>
+                            </div>
+                            </div>
+                                <div class="team-role">Front-End Engineer</div>
+                                <div class="team-university">Universitas Gunadarma</div>
+                            </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="./assets/team-members/Allicia.png" alt="Team Member Photo" class="team-photo">
+                        <div class="team-info">
+                            <div class="team-name">
+                                <h1>Allicia</h1>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/alliciagaluhparamita?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon linkedin">
+                                        <img src="./assets/img/linked.png" alt="LinkedIn">
+                                    </a>
+                                    <a href="https://www.instagram.com/alliiciiaa_?igsh=MWZoYW4yMjRsM3Jtbg==" target="_blank" class="social-icon instagram">
+                                        <img src="./assets/img/ig.png" alt="Instagram">
+                                    </a>
+                            </div>
+                            </div>
+                                <div class="team-role">Front-End Engineer</div>
+                                <div class="team-university">Institut Pertanian Bogor</div>
+                            </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="./assets/team-members/Alif.png" alt="Team Member Photo" class="team-photo">
+                        <div class="team-info">
+                            <div class="team-name">
+                                <h1>Ahmad</h1>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/ahmad-alif-wahyudi-a932962a5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon linkedin">
+                                        <img src="./assets/img/linked.png" alt="LinkedIn">
+                                    </a>
+                                    <a href="https://www.instagram.com/ahmadalifw_?igsh=MWhxMnduMjZ0emF4eg==" target="_blank" class="social-icon instagram">
+                                        <img src="./assets/img/ig.png" alt="Instagram">
+                                    </a>
+                            </div>
+                            </div>
+                                <div class="team-role">Front-End Engineer</div>
+                                <div class="team-university">Universitas Jember</div>
+                            </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="./assets/team-members/Rani.png" alt="Team Member Photo" class="team-photo">
+                        <div class="team-info">
+                            <div class="team-name">
+                                <h1>Rani</h1>
+                                <div class="social-links">
+                                    <a href="http://www.linkedin.com/in/geranieka" target="_blank" class="social-icon linkedin">
+                                        <img src="./assets/img/linked.png" alt="LinkedIn">
+                                    </a>
+                                    <a href="https://www.instagram.com/geranieka_/" target="_blank" class="social-icon instagram">
+                                        <img src="./assets/img/ig.png" alt="Instagram">
+                                    </a>
+                            </div>
+                            </div>
+                                <div class="team-role">PIC Deployment</div>
+                                <div class="team-university">STIKI Malang</div>
+                            </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="./assets/team-members/Vika.png" alt="Team Member Photo" class="team-photo">
+                        <div class="team-info">
+                            <div class="team-name">
+                                <h1>Vika</h1>
+                                <div class="social-links">
+                                    <a href="https://id.linkedin.com/in/vika-nurqurotul-1088a8274" target="_blank" class="social-icon linkedin">
+                                        <img src="./assets/img/linked.png" alt="LinkedIn">
+                                    </a>
+                                    <a href="https://www.instagram.com/vika_nbl?igsh=MThuZ2J1cHNnMTZ2cQ==" target="_blank" class="social-icon instagram">
+                                        <img src="./assets/img/ig.png" alt="Instagram">
+                                    </a>
+                            </div>
+                            </div>
+                                <div class="team-role">PIC Pitch Deck</div>
+                                <div class="team-university">Universitas PGRI Yogyakarta</div>
+                            </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="./assets/team-members/Amel.png" alt="Team Member Photo" class="team-photo">
+                        <div class="team-info">
+                            <div class="team-name">
+                                <h1>Amel</h1>
+                                <div class="social-links">
+                                    <a href="http://www.linkedin.com/in/komangameliakd" target="_blank" class="social-icon linkedin">
+                                        <img src="./assets/img/linked.png" alt="LinkedIn">
+                                    </a>
+                                    <a href="https://www.instagram.com/ameliakd_?igsh=MWVkdWE1Y3VkMzkzeg==" target="_blank" class="social-icon instagram">
+                                        <img src="./assets/img/ig.png" alt="Instagram">
+                                    </a>
+                            </div>
+                            </div>
+                                <div class="team-role">Pitch Deck</div>
+                                <div class="team-university">Institut Teknologi Sepuluh November</div>
+                            </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="./assets/team-members/Ikhsan.png" alt="Team Member Photo" class="team-photo">
+                        <div class="team-info">
+                            <div class="team-name">
+                                <h1>Ikhsan</h1>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/ikhsan-maulana-48144821b/?original_referer=" target="_blank" class="social-icon linkedin">
+                                        <img src="./assets/img/linked.png" alt="LinkedIn">
+                                    </a>
+                                    <a href="https://www.instagram.com/xsann.m?igsh=MTJ3OGRmZGVlYTM3eg==" target="_blank" class="social-icon instagram">
+                                        <img src="./assets/img/ig.png" alt="Instagram">
+                                    </a>
+                            </div>
+                            </div>
+                                <div class="team-role">PIC Quality Assurance</div>
+                                <div class="team-university">Universitas Ahmad Dahlan</div>
+                            </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="./assets/team-members/Aziz.png" alt="Team Member Photo" class="team-photo">
+                        <div class="team-info">
+                            <div class="team-name">
+                                <h1>Aziz</h1>
+                                <div class="social-links">
+                                    <a href="https://www.linkedin.com/in/muhammad-nur-rohim-aziz" target="_blank" class="social-icon linkedin">
+                                        <img src="./assets/img/linked.png" alt="LinkedIn">
+                                    </a>
+                                    <a href="https://www.instagram.com/nurrohimazizz" target="_blank" class="social-icon instagram">
+                                        <img src="./assets/img/ig.png" alt="Instagram">
+                                    </a>
+                            </div>
+                            </div>
+                                <div class="team-role">Quality Assurance</div>
+                                <div class="team-university">Institut Pertanian Bogor</div>
+                            </div>
+                    </div>
+                    <div class="team-card">
+                        <img src="./assets/team-members/Eve.png" alt="Team Member Photo" class="team-photo">
+                        <div class="team-info">
+                            <div class="team-name">
+                                <h1>Eve</h1>
+                                <div class="social-links">
+                                    <a href="https://id.linkedin.com/in/evepaulinedamanik" target="_blank" class="social-icon linkedin">
+                                        <img src="./assets/img/linked.png" alt="LinkedIn">
+                                    </a>
+                                    <a href="https://www.instagram.com/eve_pauline_damanik?igsh=MWEyZmgzNWsxajl0cQ==" target="_blank" class="social-icon instagram">
+                                        <img src="./assets/img/ig.png" alt="Instagram">
+                                    </a>
+                            </div>
+                            </div>
+                                <div class="team-role">Quality Assurance</div>
+                                <div class="team-university">Universitas Palangka Raya</div>
+                            </div>
+                    </div>
+                    
+        </section>
+        
+        <!-- Footer -->
         <footer>
-            <h2>Copyright &copy; 2015, Team 21 Surabaya</h2>
+            <a href="#home"><img src="assets/mark pizza logo.png" alt="pizza-mark-logo" ></a>
+            <p>2015 BUSINESS REPORT <br> CREATED BY TEAM 21 - SURABAYA</p>
+            <h2>Copyright &copy; 2015</h2>
         </footer>
     </div>
+
 </body>
 </html>

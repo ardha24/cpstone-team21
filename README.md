@@ -1,2 +1,3 @@
-# cpstone-team21
- Capstone project team 21
+THIS IS TEAM-21 SECTION SURABAYA'S CAPSTONE PROJECT
+PIZZA SALES
+
